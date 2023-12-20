@@ -39,3 +39,28 @@ select *
 from `degrees` d
 join departments d2  on d.department_id =d2.id 
 where d2.name = 'Dipartimento di Neuroscienze' and d.name like '%Magistrale%';
+
+-- BONUS
+-- Selezionare nome e cognome di tutti gli studenti che hanno superato l’esame del corso “maxime laboriosam nostrum” (39)
+select s.name , s.surname 
+from students s 
+join exam_student es on s.id = es.student_id 
+join exams e on es.exam_id = e.id 
+join courses c on e.course_id = c.id 
+where c.name = 'maxime laboriosam nostrum' and es.vote >=18;
+
+-- Elencare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+select *
+from teachers t 
+join course_teacher ct on t.id = ct.teacher_id 
+join courses c on ct.course_id = c.id 
+join `degrees` d on c.degree_id = d.id 
+join departments d2 on d.department_id = d2.id 
+where d2.name = 'Dipartimento di Matematica';
+
+
+
+
+
+
